@@ -21,13 +21,13 @@ while run:
             run=False
 
     userInput = pygame.key.get_pressed()
-    if userInput[pygame.K_LEFT]:
+    if userInput[pygame.K_LEFT] and circle_x_position >0:
         circle_x_position -= vel
-    if userInput[pygame.K_RIGHT]:
+    if userInput[pygame.K_RIGHT] and circle_x_position <500:
         circle_x_position +=vel
-    if userInput[pygame.K_UP]:
+    if userInput[pygame.K_UP] and circle_y_position >0:
         circle_y_position -= vel
-    if userInput[pygame.K_DOWN]:
+    if userInput[pygame.K_DOWN] and circle_y_position < 500:
         circle_y_position += vel
     pygame.time.delay(15)
 
