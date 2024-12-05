@@ -9,7 +9,10 @@ pygame.display.set_caption("First game")
 circle_x_position = 255
 circle_y_position = 255
 circle_radius = 15
-vel = 5
+vel_x = 10
+vel_y = 10
+
+jump =False
 
 run = True
 while run:
@@ -22,13 +25,20 @@ while run:
 
     userInput = pygame.key.get_pressed()
     if userInput[pygame.K_LEFT] and circle_x_position >0:
-        circle_x_position -= vel
+        circle_x_position -= vel_x
     if userInput[pygame.K_RIGHT] and circle_x_position <500:
-        circle_x_position +=vel
-    if userInput[pygame.K_UP] and circle_y_position >0:
-        circle_y_position -= vel
-    if userInput[pygame.K_DOWN] and circle_y_position < 500:
-        circle_y_position += vel
-    pygame.time.delay(15)
+        circle_x_position +=vel_x
+
+    if jump is False and  userInput[pygame.K_SPACE]:
+        jump = True
+    
+    if jump is True:
+        circle_y_position-=vel_y*3
+        vel_y -=1
+        if vel_y <-10:
+            jump = False
+            vel_y = 10
+    
+    pygame.time.delay(50)
 
     pygame.display.update()
